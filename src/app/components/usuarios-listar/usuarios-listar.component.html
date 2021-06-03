@@ -1,0 +1,28 @@
+<form action="../user/procesar" method="post">
+    <table border="1">
+        <thead>
+            <th>Accion</th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>password</th>
+        </thead>
+        <tbody *ngIf="usuarios.length > 0; else fila">
+            <tr *ngFor=" let usuario of usuarios">
+                <td>
+                    <input type="checkbox" name="usuario" value="{{usuario.id}}">
+                </td>
+                <td>{{usuario.id}}</td>
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.password}}</td>
+            </tr>
+        </tbody>
+        <ng-template #fila>
+            <tbody>
+                <tr>
+                    <td colspan="4">No hay mas filas</td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+    <button class="">Enviar</button>
+</form>

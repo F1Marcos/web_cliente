@@ -1,0 +1,33 @@
+
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>Sign Up</h3>
+                </div>
+                <div *ngIf="!registroEnv" class="card-body">
+                    <form (submit)="registrar()">
+                        <div class="form-group">
+                            <input type="text" name="nombre" [(ngModel)]="user.nombre" placeholder="Nombre" class="form-control">
+                            <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña" class="form-control">
+                            <input type="password" name="repassword" [(ngModel)]="user.repassword" placeholder="Repetir Contraseña"class="form-control">
+                            <input type="email" name="email" [(ngModel)]="user.email" placeholder="email"class="form-control">
+                            <button type="submit" class="btn btn-success btn-block">Enviar</button>
+                        </div>
+                    </form>
+                    </div>
+                    <div *ngIf="registroEnv" class="card-body">
+                <div *ngIf="registroOk" class="card-body">
+                    {{mensaje}} <br>
+                    <a class="btn btn-info" (click)=iniciarSesion()>Iniciar Sesion</a> 
+                </div>
+                <div *ngIf="!registroOk" class="card-body">
+                    {{mensaje}} <br>
+                    <a class="btn btn-info" (click)=reintentarReg()>Reintentar registro</a> 
+                </div>     
+            </div>   
+            </div>
+        </div>
+    </div>
+</div>
