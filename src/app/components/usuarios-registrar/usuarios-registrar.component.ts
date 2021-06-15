@@ -14,16 +14,21 @@ export class UsuariosRegistrarComponent implements OnInit {
   mensaje:string="";
   user={  nombre:"", email:"", password:"",repassword:""};
 
+  errorNombre=0;
+  errrorPassword=0;
+  errorRePassrword=0;
+  errorEmail=0;
+
   constructor(private usuariosService: UsuariosService,private router:Router) {
    }
 
   ngOnInit(): void {
-
   }
 
   registrar(){
     this.registroEnv=true;
 		console.log("Sign Up");
+    console.log(this.user);
     this.usuariosService.registrar(this.user).subscribe(
       res => {
         let result:any=res;
@@ -39,18 +44,102 @@ export class UsuariosRegistrarComponent implements OnInit {
     )
 
 	}
-    reintentarReg(){
-    this.mensaje="";
-    this.registroEnv=false;
-    this.user={  nombre:"", email:"", password:"",repassword:""};
-    this.router.navigate(['usuarios/registrar']);
 
+  verificarForm():boolean{
+    this.errorNombre=this.verificarNombre(this.user.nombre);
+    this.errrorPassword=this.verificarPassword(this.user.password);
+    this.errorRePassrword=this.verificarRePassword(this.user.password, this.user.repassword);
+    this.errorEmail=this.verificarEmail(this.user.email);
+    if(  (this.errorNombre+this.errrorPassword+this.errorRePassrword+this.errorEmail)>0){
+      return false;
+    }
+    return true;
+  }
+
+  verificarNombre(nombre:string):number {
+    const patron=/^[a-zA-Z]+$/;
+    if(nombre.length==0)
+      return 1;
+    if(nombre.length>20)
+      return 2;
+    if(!patron.test(nombre))
+      return 3;
+    return 0;
+  }
+  
+  verificarPassword(password:any): number {
+    const patron=/^[a-zA-Z0-9]+$/;
+    // const patron= /[0-9]{1,}[A-Za-z]{1,}/g;
+    if(password.length==0)
+      return 1;
+    if(password.length>20)
+      return 2;
+    if(!patron.test(password))
+      return 3;
+    return 0;
+  }
+  
+  verificarRePassword(password:any, repassword:any): number {
+    if(password!=repassword){
+      return 1;
+    }
+    return 0;
+  }
+  
+  verificarEmail(email:any): number {
+    const patron=/[a-z0-9]{1,10}@[a-z0-9]{1,10}.[a-z]{2,3}/;
+    if(email.length==0)
+      return 1;
+    if(email.length>20)
+      return 2;
+    if(!patron.test(email))
+      return 3;
+    return 0;
+  }
+
+  limpiarNombre() {
+    if (this.errorNombre > 0) {
+      console.log("Limpiar nombre");
+      this.user.nombre = "";
+      this.errorNombre = 0;
+    }
+  }
+
+  limpiarPassword() {
+    if (this.errrorPassword > 0) {
+      console.log("Limpiar password");
+      this.user.password = "";
+      this.errrorPassword = 0;
+    }
+  }
+
+  limpiarRePassword() {
+    if (this.errorRePassrword > 0) {
+      console.log("Limpiar repassword");
+      this.user.repassword = "";
+      this.errorRePassrword = 0;
     }
 
-    iniciarSesion(){
-    this.mensaje="";
-    this.registroEnv=false;
-    this.router.navigate(['usuarios/ingresar']);
+  }
+
+  limpiarEmail() {
+    if(this.errorEmail>0){
+      console.log("Limpiar email");
+      this.user.email = "";
+      this.errorEmail = 0;
     }
+  }
+
+  reintentarReg(){
+  this.mensaje="";
+  this.registroEnv=false;
+  this.user={  nombre:"", email:"", password:"",repassword:""};
+  this.router.navigate(['usuarios/registrar']);
+  }
+  iniciarSesion(){
+  this.mensaje="";
+  this.registroEnv=false;
+  this.router.navigate(['usuarios/ingresar']);
+  }
 
 }

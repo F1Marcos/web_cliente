@@ -1,0 +1,15 @@
+#h1Web {
+    font-family:times new roman;
+    font-size:30px;
+    font-style:italic;
+    font-weight:bold;
+  }
+
+#div2{ /* Esto significa que el ID div2 cuando lo llame tengra este formato de abajo*/ 
+	background-color: rgb(200,200,200);
+}
+
+.grande{ /* Para el atributo class que tenga este valor llamado .grande| EJEMPLO: class="grande" */ 
+	font-size:130px;
+}		
+

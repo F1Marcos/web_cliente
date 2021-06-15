@@ -6,6 +6,7 @@ import {UsuariosRegistrarComponent} from "./components/usuarios-registrar/usuari
 import { UsuariosPrincipalComponent } from "./components/usuarios-principal/usuarios-principal.component";
 import { UsuariosHomeComponent } from "./components/usuarios-home/usuarios-home.component";
 import {AuthGuard} from './auth.guard';
+import { UsuariosPizarraComponent} from "./components/usuarios-pizarra/usuarios-pizarra.component";
 
 
 const routes: Routes = [
@@ -35,8 +36,11 @@ const routes: Routes = [
 		path:'usuarios/home',
 		component: UsuariosHomeComponent,
 		canActivate: [AuthGuard]
+	},
+	{
+		path: 'usuarios/pizarra',
+		component: UsuariosPizarraComponent,
 	}
-	
 ];
 
 @NgModule({

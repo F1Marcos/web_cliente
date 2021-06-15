@@ -11,9 +11,9 @@ import {Router} from '@angular/router'
 })
 export class UsuariosIngresarComponent implements OnInit {
 
+  user={  usuario:"", password:""};
   reintentar:boolean=false;
   mensaje:string="";
-  user={  usuario:"", password:""};
   constructor(private usuariosService: UsuariosService,private router:Router) {
 
    }
@@ -30,6 +30,8 @@ export class UsuariosIngresarComponent implements OnInit {
         let result:any=res;
         console.log(result.message);
         localStorage.setItem('token',result.token);
+        // Ocultar NAvbar:
+        this.usuariosService.logued$.emit();
         this.router.navigate(['usuarios/home']);
       },
       err => {

@@ -1,19 +1,34 @@
-<form action="../user/procesar" method="post">
-    <table border="1">
+<div *ngIf="alert">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span aria-hidden="false">&times;</span>
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+</div>
+
+<div class="container">
+
+    <table border="1" style="width:100%">
         <thead>
-            <th>Accion</th>
             <th>ID</th>
             <th>Nombre</th>
-            <th>password</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Rol</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
         </thead>
         <tbody *ngIf="usuarios.length > 0; else fila">
-            <tr *ngFor=" let usuario of usuarios">
-                <td>
-                    <input type="checkbox" name="usuario" value="{{usuario.id}}">
-                </td>
-                <td>{{usuario.id}}</td>
-                <td>{{usuario.nombre}}</td>
-                <td>{{usuario.password}}</td>
+            <tr *ngFor=" let user of usuarios">
+                <td><input type="text" name="id" [(ngModel)]="user.id" class=" form-control" readonly></td>
+                <td><input type="text" name="nombre" [(ngModel)]="user.nombre" class="form-control" autofocus></td>
+                <td><input type="text" name="email" [(ngModel)]="user.email" class="form-control"></td>
+                <td><input type="password" name="password" [(ngModel)]="user.password" class="form-control"></td>
+                <td><input type="text" name="rol" [(ngModel)]="user.rol" class="form-control"></td>
+                <td><a class="btn btn-info" (click)=modificarUsuario(user)>Modificar</a></td>
+                <td><a class="btn btn-danger" (click)=eliminarUsuario(user)>Eliminar</a></td>
             </tr>
         </tbody>
         <ng-template #fila>
@@ -24,5 +39,9 @@
             </tbody>
         </ng-template>
     </table>
-    <button class="">Enviar</button>
-</form>
+</div>
+
+<div align="left"> <br>
+    <h3>Volver:</h3>
+    <a class="btn btn-info" routerLink="/usuarios/home">Volver<span class="sr-only">(current)</span></a>
+</div>
