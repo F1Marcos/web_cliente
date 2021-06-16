@@ -28,7 +28,7 @@ export class UsuariosListarComponent implements OnInit {
   modificarUsuario(user:any){
     console.log('FE: Entre metod post modificarProducto!');
     console.log(user);
-    //TEST:
+    //TEST: -> test OK
     var newObj = JSON.parse(JSON.stringify(user)); 
     console.log(newObj);
 

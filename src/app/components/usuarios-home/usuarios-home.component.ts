@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usuarios-home.component.css']
 })
 export class UsuariosHomeComponent implements OnInit {
-
+  rol:string="";
+  usuario:string="";
   constructor() { }
 
   ngOnInit(): void {
+    this.rol = localStorage.rol;
+    this.usuario = localStorage.usuario;
   }
 
 }
