@@ -19,6 +19,7 @@ export class UsuariosListarComponent implements OnInit {
         this.usuarios = res;
         console.log(res)
         this.alert=false;
+        // Esta alerta desaparece muy ratpido -> no encontre correccion por ahora
       },
       err => console.log(err)
     )
