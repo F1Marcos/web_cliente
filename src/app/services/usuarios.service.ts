@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 
 export class UsuariosService {
-	API_URI = 'http://localhost:3000/user';
-	// API_URI = 'https://servidor-02.herokuapp.com/user';
+	// API_URI = 'http://localhost:3000/user';
+	API_URI = 'https://servidor-02.herokuapp.com/user';
 	
 	logued$ = new EventEmitter<string>();
 

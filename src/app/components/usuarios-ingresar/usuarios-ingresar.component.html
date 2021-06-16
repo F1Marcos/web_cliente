@@ -8,7 +8,7 @@
                 <div *ngIf="!reintentar" class="card-body">                                                                            
                     <form (submit)="ingresar()">
                         <div class="form-group">
-                            <input type="text" name="usuario" [(ngModel)]="user.usuario" placeholder="Usuario" class="form-control" autofocus>
+                            <input type="text" name="usuario" [(ngModel)]="user.usuario" placeholder="Usuario" class="form-control" autofocus="autofocus">
                             <input type="password" name="password" [(ngModel)]="user.password" placeholder="Contraseña" class="form-control">                            
                             <button type="submit" class="btn btn-success btn-block">Enviar</button>                           
                         </div>

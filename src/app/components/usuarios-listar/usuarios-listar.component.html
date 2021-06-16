@@ -1,17 +1,16 @@
-<div *ngIf="alert">
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <span aria-hidden="false">&times;</span>
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-</div>
+<tbody *ngIf="alert">
+    <div id="aviso">
+        <div class="alert alert-success alert-dismissible"> <button type="button" class="close"
+                data-dismiss="alert">&times;</button>
+            <strong> Articulo Actualizado correctamente </strong>
+        </div>
+    </div>
+</tbody>
+
 
 <div class="container">
-
-    <table border="1" style="width:100%">
-        <thead>
+    <table class="table table-dark table-striped table-hover">
+        <thead class="thead-dark">
             <th>ID</th>
             <th>Nombre</th>
             <th>Email</th>
@@ -27,7 +26,7 @@
                 <td><input type="text" name="email" [(ngModel)]="user.email" class="form-control"></td>
                 <td><input type="password" name="password" [(ngModel)]="user.password" class="form-control"></td>
                 <td><input type="text" name="rol" [(ngModel)]="user.rol" class="form-control"></td>
-                <td><a class="btn btn-info" (click)=modificarUsuario(user)>Modificar</a></td>
+                <td><a class="btn btn-warning" (click)=modificarUsuario(user)>Modificar</a></td>
                 <td><a class="btn btn-danger" (click)=eliminarUsuario(user)>Eliminar</a></td>
             </tr>
         </tbody>
@@ -42,6 +41,6 @@
 </div>
 
 <div align="left"> <br>
-    <h3>Volver:</h3>
+    <h5>Volver:</h5>
     <a class="btn btn-info" routerLink="/usuarios/home">Volver<span class="sr-only">(current)</span></a>
 </div>

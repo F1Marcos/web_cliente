@@ -18,6 +18,7 @@ export class UsuariosListarComponent implements OnInit {
       res => {
         this.usuarios = res;
         console.log(res)
+        this.alert=false;
       },
       err => console.log(err)
     )
@@ -41,7 +42,6 @@ export class UsuariosListarComponent implements OnInit {
 			  console.log('RESPUESTA DEL BACKEN STATUS:');
 			  console.log(result);
         console.log('ACA ABAJO IMPRIMO EL ALERT:');
-        this.alert=false;
         this.alert=true;
         console.log('ACA IMPRIMO EL ALERT:');
         console.log(this.alert);
